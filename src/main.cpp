@@ -5,7 +5,15 @@
 int main()
 {
 	sf::RenderWindow display {sf::VideoMode(854, 480), "Taylor Polynomials", sf::Style::Close};
-	bool running {true};
+	sf::Texture menu, button, factory, conveyor, flipper;
+	menu    .loadFromFile{"menu.png"    };
+	button  .loadFromFile{"button.png"  };
+	factory .loadFromFile{"factory.png" };
+	conveyor.loadFromFile{"conveyor.png"};
+	flipper .loadFromFile{"flipper.png" };
+	sf::Font arial; arial.loadFromFile("arial.ttf");
+	sf::Text snakebutton   {"Taylor's Snake", arial}
+	,        factorybutton {"Taylor's Factory", arial};
 	bool click {false}
 	,    w     {false}
 	,    a     {false}
@@ -13,7 +21,7 @@ int main()
 	,    d     {false};
 	int mx {0}
 	,   my {0};
-	while(running)
+	while(display.isOpen())
 	{
 		sf::Event e;
 		while(display.pollEvent(event))
@@ -23,7 +31,7 @@ int main()
 			{
 			case sf::Event:Closed:
 				{
-					running = false;
+					display.close();
 				} break;
 			case sf::Event::KeyPressed:
 				{
@@ -60,10 +68,20 @@ int main()
 				}
 			}
 		}
+		display.clear();
 
 		//logic
 
 		//render
+		display.draw(menu);
+		button.setPosition(854f/2f, (480f/3f)*1f);
+		snakebutton.setPosition(button.getPosition());
+		display.draw(button);
+		display.draw(snakebutton);
+		button.setPosition(854f/2f, (480f/3f)*2f);
+		factorybutton.setPosition(button.getPosition());
+		display.draw(button);
+		display.draw(factorybutton);
 		display.display();
 	}
 }
