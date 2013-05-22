@@ -6,16 +6,16 @@ int main()
 {
 	sf::RenderWindow display {sf::VideoMode(854, 480), "Taylor Polynomials", sf::Style::Close};
 	bool running {true};
+	bool click {false}
+	,    w     {false}
+	,    a     {false}
+	,    s     {false}
+	,    d     {false};
+	int mx {0}
+	,   my {0};
 	while(running)
 	{
 		sf::Event e;
-		bool click {false}
-		,    w     {false}
-		,    a     {false}
-		,    s     {false}
-		,    d     {false};
-		int mx {0}
-		,   my {0};
 		while(display.pollEvent(event))
 		{
 			//handle event
