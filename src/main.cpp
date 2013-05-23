@@ -6,18 +6,16 @@ int main()
 {
 	sf::RenderWindow display {sf::VideoMode(854, 480), "Taylor Polynomials", sf::Style::Close};
 
-	sf::Texture menut, buttont, factoryt, conveyort, flippert;
+	sf::Texture buttont, factoryt, conveyort, flippert;
 	sf::Font arial;
 
-	menut    .loadFromFile("menu.png"    );
 	buttont  .loadFromFile("button.png"  );
 	factoryt .loadFromFile("factory.png" );
 	conveyort.loadFromFile("conveyor.png");
 	flippert .loadFromFile("flipper.png" );
 	arial    .loadFromFile("arial.ttf"   );
 
-	sf::Sprite menu     {menut}
-	,          button   {buttont}
+	sf::Sprite button   {buttont}
 	,          factory  {factoryt}
 	,          conveyor {conveyort}
 	,          fipper   {flippert};
@@ -104,7 +102,6 @@ int main()
 		{
 		case Screen::Menu:
 			{
-				display.draw(menu);
 				button.setPosition(854.0f/2.0f, (480.0f/3.0f)*1.0f);
 				snakebutton.setPosition(button.getPosition());
 				display.draw(button);
