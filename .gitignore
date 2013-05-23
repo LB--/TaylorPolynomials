@@ -1,3 +1,6 @@
+# Built files
+*.exe
+
 # Windows Shortcut File
 *.lnk
 
@@ -9,6 +12,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.dll
 
 # Compiled Static libraries
 *.lai

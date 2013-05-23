@@ -32,6 +32,12 @@ int main()
 	,    d     {false};
 	int mx {0}
 	,   my {0};
+	enum class Screen
+	{
+		Menu,
+		Snake,
+		Factory,
+	} screen {Screen::Menu};
 
 	while(display.isOpen())
 	{
@@ -94,15 +100,27 @@ int main()
 		//logic
 
 		//render
-		display.draw(menu);
-		button.setPosition(854.0f/2.0f, (480.0f/3.0f)*1.0f);
-		snakebutton.setPosition(button.getPosition());
-		display.draw(button);
-		display.draw(snakebutton);
-		button.setPosition(854.0f/2.0f, (480.0f/3.0f)*2.0f);
-		factorybutton.setPosition(button.getPosition());
-		display.draw(button);
-		display.draw(factorybutton);
+		switch(screen)
+		{
+		case Screen::Menu:
+			{
+				display.draw(menu);
+				button.setPosition(854.0f/2.0f, (480.0f/3.0f)*1.0f);
+				snakebutton.setPosition(button.getPosition());
+				display.draw(button);
+				display.draw(snakebutton);
+				button.setPosition(854.0f/2.0f, (480.0f/3.0f)*2.0f);
+				factorybutton.setPosition(button.getPosition());
+				display.draw(button);
+				display.draw(factorybutton);
+			} break;
+		case Screen::Snake:
+			{
+			} break;
+		case Screen::Factory:
+			{
+			} break;
+		}
 		display.display();
 	}
 }
