@@ -1,6 +1,10 @@
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <json.h>
+#include <string>
+#include <streambuf>
+#include <fstream>
 
 int main()
 {
@@ -36,6 +40,22 @@ int main()
 		Snake,
 		Factory,
 	} screen {Screen::Menu};
+
+	struct JVRAII
+	{
+		JVRAII(char const *file)
+		: jv(nullptr)
+		{
+			std::string str ((std::istreambuf_iterator<char>(std::fstream(file))), std::istreambuf_iterator<char>());
+			jv = json_parse(str.c_str(), str.length());
+		}
+		~JVRAII()
+		{
+			json_value_free(jv);
+		}
+		json_value *jv;
+	} configjv ("config.json");
+	json_value &config = *(configjv.jv);
 
 	while(display.isOpen())
 	{
