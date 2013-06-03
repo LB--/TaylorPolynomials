@@ -1,6 +1,9 @@
 # Built files
 *.exe
 
+# Library files
+/lib/
+
 # Windows Shortcut File
 *.lnk
 

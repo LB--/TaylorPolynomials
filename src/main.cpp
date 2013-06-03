@@ -5,6 +5,7 @@
 #include <string>
 #include <streambuf>
 #include <fstream>
+#include <muParser.h>
 
 int main()
 {
@@ -46,7 +47,8 @@ int main()
 		JVRAII(char const *file)
 		: jv(nullptr)
 		{
-			std::string str ((std::istreambuf_iterator<char>(std::fstream(file))), std::istreambuf_iterator<char>());
+			std::ifstream s {file};
+			std::string str ((std::istreambuf_iterator<char>(s)), std::istreambuf_iterator<char>());
 			jv = json_parse(str.c_str(), str.length());
 		}
 		~JVRAII()
